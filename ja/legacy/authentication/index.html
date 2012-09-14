@@ -21,11 +21,32 @@
         <div>
           <a class="logo" href="/"><img src="/images/logo_developer.png" width="120" height="43" /></a>
           <ul class="nav">
-            <li><a href="/">English</a></li>
-            <li><a href="/ja/">日本語</a></li>
+            <!-- <li><a href="/">English</a></li>
+            <li><a href="/ja/">日本語</a></li> -->
             <li><a href="mailto:support@gengo.com?subject=GengoAPI">Support</a></li>
           </ul>
         </div>
+        
+          <nav class="gengo-tabs clearfix"><!-- gengo nav -->
+  <ul>
+    <li>
+        <a href="http://gengo.com/express/order-translation/" class="link-section-tab ">Order now</a>
+    </li>
+    <li>
+        <a href="http://gengo.com/enterprise/" class="link-section-tab ">Enterprise</a>
+    </li>
+    <li>
+        <a href="http://gengo.com/how-it-works/" class="link-section-tab link-section-tab-before-selected">How it works</a>
+    </li>
+    <li>
+        <a href="http://gengo.com/api/" class="link-section-tab link-section-tab-selected">Developers</a>
+    </li>
+    <li>
+        <a href="http://gengo.com/customers/" class="link-section-tab link-section-tab-last">Customers</a>
+    </li>
+  </ul>
+</nav>
+        
       </div><!-- #header -->
     </div><!-- #header-wrapper -->
 
@@ -50,35 +71,37 @@ example: “food=steak&amp;cuisine=french&amp;drink=wine” sorts to “cuisine=
   <li>Append the value of this hash to the argument list as a parameter named api_sig</li>
 </ul><h2 id="example-api-authenticated-call">Example API authenticated call</h2>
 
-<pre><code>// submit a comment for job ID 20
+<pre class="code">
+    // submit a comment for job ID 20
 
-$params = array('body' =&gt; 'please use British spelling');
+    $params = array('body' =&gt; 'please use British spelling');
 
-// curl can't send nested arrays, only straight key-value pairs,
-// so 'data' must be flattened; we use json_encode()
-$params = array(
-    'api_key' =&gt; 'kZ|G@SbBAjffh}!~%',
-    '_method' =&gt; 'put',
-    'data' =&gt; json_encode($params));
+    // curl can't send nested arrays, only straight key-value pairs,
+    // so 'data' must be flattened; we use json_encode()
+    $params = array(
+        'api_key' =&gt; 'kZ|G@SbBAjffh}!~%',
+        '_method' =&gt; 'put',
+        'data' =&gt; json_encode($params));
 
-// use your private_key to create an hmac
-$private_key = '$Z)YI=@ndYn@]zpu=AqOc=I}pGQZ';
-$hmac = hash_hmac('sha1', json_encode($params), $private_key);
-$params['api_sig'] = $hmac;
-$url = 'http://api.mygengo.com/v1/translate/job/20/comment'
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-$response = curl_exect($ch); curl_close($ch);
-</code></pre>
+    // use your private_key to create an hmac
+    $private_key = '$Z)YI=@ndYn@]zpu=AqOc=I}pGQZ';
+    $hmac = hash_hmac('sha1', json_encode($params), $private_key);
+    $params['api_sig'] = $hmac;
+    $url = 'http://api.mygengo.com/v1/translate/job/20/comment'
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    $response = curl_exect($ch); curl_close($ch);
+</pre>
       </div>
 
       
         <div id="js-sidebar" class="sidebar-shell">
   <div class="js-toggle-list sidebar-module expandable">
     <ul>
+      <li class="js-guides"><h3><a href="/legacy/legacy_docs.pdf">Legacy API Documentation</a></h3></li>
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/ja/overview/">システム概観</a></h3>
         <ul class="js-guides">
@@ -90,6 +113,7 @@ $response = curl_exect($ch); curl_close($ch);
           <li><a href="/ja/v2/best_practices/">Best Practices</a></li>
           <li><a href="/ja/v2/ui_recommendations/">UI Recommendations</a></li>
           <li><a href="/ja/v2/api_methods/">API Methods</a></li>
+          <li><a href="/ja/v2/throttling/">Throttling</a></li>
         </ul>
       </li>
       <li class="js-topic">

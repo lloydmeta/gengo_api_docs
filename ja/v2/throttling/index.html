@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Sandbox Testing | Gengo API</title>
+  <title>API Throttling | Gengo API</title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
   <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
@@ -52,28 +52,9 @@
 
     <div id="wrapper">
       <div class="content">
-        <h1 id="sandbox-testing">Sandbox testing</h1>
+        <h1 id="throttling">Throttling</h1>
 
-<h3 id="the-testing-area-for-your-api-code">The testing area for your API code.</h3>
-
-<p>What’s different about the sandbox?</p>
-
-<ul>
-<li>You can add free credits to your account at will, for testing.</li>
-  <li>You can trigger the “completion” of your translation jobs (i.e. be a faux translator) so that you can test what your code does in response.</li>
-  <li>Additional controls for you to manually trigger job status changes and other actions, so that you can test your callbacks.</li>
-  <li>The sandbox jobs database may occasionally be wiped clean to prepare it for new features. As such you should not rely on the sandbox for permanent storage.</li>
-</ul><h2 id="how-to-use-the-sandbox">How to use the sandbox</h2>
-
-<ul>
-<li>Check out the <a href="/">developer documentation</a>.</li>
-  <li>Create your sandbox account</li>
-  <li>Log in and visit your Account API Keys page to generate a set of sandbox API keys.</li>
-  <li>Test your app, using http://api.sandbox.mygengo.com/v2/ as the base call URL.</li>
-  <li>Ready to deploy? Head over to the live <a href="http://gengo.com">gengo.com</a> site. Create a full user account, generate a set of live API keys - and remember to paste them into your app.</li>
-</ul><h2 id="ready-get-started-on-the-sandbox">Ready? Get started on the sandbox.</h2>
-
-<p>Create your <a href="http://sandbox.mygengo.com">sandbox account</a></p>
+<p>Please note that our API currently has a 150 requests per minute limit per originating IP address.</p>
       </div>
 
       

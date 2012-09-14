@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Payloads | Gengo API</title>
+  <title>API Throttling | Gengo API</title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
   <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
@@ -52,113 +52,9 @@
 
     <div id="wrapper">
       <div class="content">
-        <h1 id="payloads">Payloads</h1>
+        <h1 id="throttling">Throttling</h1>
 
-<p><strong>Most of the processing throughout the Translate API will be around a Job Payload. This is a simple container representing the instance of a translation job.</strong></p>
-
-<ul>
-<li><a href="#job-payload---for-responses">For responses</a></li>
-  <li><a href="#job-payload---for-submissions">For submissions</a></li>
-</ul><h2 id="job-payload---for-responses">Job Payload - For responses</h2>
-
-<dl>
-<dt>job_id</dt>
-  <dd>
-<em>String</em> of Job ID.</dd>
-  <dt>body_src</dt>
-  <dd>
-<em>String</em> of original body of text (to be translated).</dd>
-  <dt>body_tgt</dt>
-  <dd>
-<em>String</em> of translated body of text (if available).</dd>
-  <dt>lc_src</dt>
-  <dd>
-<em>String</em> of source language code. Gengo uses IETF codes to define languages and language pairs.</dd>
-  <dt>lc_tgt</dt>
-  <dd>
-<em>String</em> of target language code.</dd>
-  <dt>unit_count</dt>
-  <dd>
-<em>Integer</em> of count of source language units (either words or characters depending on source language)
-tier String. Quality level (“machine”, “standard”, “pro”, or “ultra”)</dd>
-  <dt>credits</dt>
-  <dd>
-<em>Decimal</em> of credit price based on language pair and tier.</dd>
-  <dt>status</dt>
-  <dd>
-<em>String</em> of current status of job. Either “available”, “pending”, “reviewable”, “revising”, “approved”, or “cancelled”.</dd>
-  <dt>captcha_url</dt>
-  <dd>
-<em>String</em> of the full URL to a captcha image, used only if a job is in the “reviewable” state and you wish to reject the job.</dd>
-  <dt>eta</dt>
-  <dd>
-<em>Integer</em> of Estimated seconds until completion.
-callback_url String. The full URL to which we will send system updates (completed jobs, new comments, etc.).</dd>
-  <dt>auto_approve</dt>
-  <dd>
-<em>Boolean</em> of whether the job will be automatically approved after translation has completed.</dd>
-  <dt>ctime</dt>
-  <dd>
-<em>String</em> of Unix Timestamp for when this job was submitted (by you - not by the translator).</dd>
-  <dt>custom_data</dt>
-  <dd>
-<em>String</em> of up to 1K of client-specific data that may have been sent when the job was submitted.
-mt This value will be “1” if the text in body_tgt is a machine translation. A machine translation is provided as a convenience while a human translation is pending. You can choose to use or discard the provided translation.</dd>
-</dl><h2 id="job-payload---for-submissions">Job Payload - For submissions</h2>
-
-<dl>
-<dt>body_src</dt>
-  <dd>
-<em>String</em> of original body of text (to be translated).</dd>
-  <dt>lc_src</dt>
-  <dd>
-<em>String</em> of source language code. Gengo uses IETF codes to define languages and language pairs.</dd>
-  <dt>lc_tgt</dt>
-  <dd>
-<em>String</em> of target language code.</dd>
-  <dt>tier</dt>
-  <dd>
-<em>String</em> of quality level (“machine”, “standard”, “pro”, or “ultra”)</dd>
-  <dt>type</dt>
-  <dd>
-<em>String</em> of job type. Either ‘text’ (default) or ‘file’. Use ‘file’ for ordering file jobs via the API using job identifiers from the file quote function.</dd>
-  <dt>identifier <em>(required if type = ‘file’)</em>
-</dt>
-  <dd>
-<em>String</em> of the identifier returned as a response from the file quote method (e.g. identifer = ‘2ea3a2dbea3be97375ceaf03200fb184’)</dd>
-  <dt>glossary_id <em>(optional)</em>
-</dt>
-  <dd>
-<em>String</em> id of the glossary that you want to use.</dd>
-  <dt>position <em>(optional)</em>
-</dt>
-  <dd>
-<em>String</em> of the position of the job in a group of jobs. When the job group is displayed to translators, this ensures that ordering is maintained. This parameter is ignored when a group of jobs is submitted without as_group or if the string of the position cannot be casted into an integer.</dd>
-  <dt>force <em>(optional) 1 (true) / 0 (false - default)</em>
-</dt>
-  <dd>
-<em>Integer</em> of whether or not to override lazy loading and force a new translation. Read about lazy loading here.</dd>
-  <dt>comment <em>(optional)</em>
-</dt>
-  <dd>
-<em>String</em> of instructions or comments for translator to consider when translating.</dd>
-  <dt>use_preferred <em>(optional) 1 (true) / 0 (false)</em>
-</dt>
-  <dd>
-<em>Integer</em> of whether to use translators from the preferred translators list associated with the account.</dd>
-  <dt>callback_url <em>(optional)</em>
-</dt>
-  <dd>
-<em>String</em> of the full URL to which we will send system updates (completed jobs, new comments, etc.).</dd>
-  <dt>auto_approve <em>(optional) 1 (true) / 0 (false)</em>
-</dt>
-  <dd>
-<em>Integer</em> of whether to automatically approve jobs after they’ve been translated. Default is false. If false, completed jobs will await review and approval by customer for 72 hours.</dd>
-  <dt>custom_data <em>(optional)</em>
-</dt>
-  <dd>
-<em>String</em> of up to 1K of storage for client-specific data that may be helpful for you to have mapped to this job.</dd>
-</dl>
+<p>Please note that our API currently has a 150 requests per minute limit per originating IP address.</p>
       </div>
 
       
